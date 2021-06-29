@@ -1,0 +1,5 @@
+.idea
+db_data/*
+!db_data/.gitkeep
+wordpress_data/*
+!wordpress_data/.gitkeep

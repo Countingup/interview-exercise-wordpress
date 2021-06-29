@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  apiservice:
+    image: node:16-alpine3.11
+    volumes:
+      - ./apiservice:/apiservice
+    command: npx ncdc serve /apiservice/mock-service.yml
+    ports:
+      - "8001:4000"
+
+  wordpress:
+    depends_on:
+      - db
+      - apiservice
+    image: wordpress:latest
+    volumes:
+      - ./wordpress_data:/var/www/html
+      - ./custom_blocks:/var/www/html/wp-content/plugins/custom_blocks
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress

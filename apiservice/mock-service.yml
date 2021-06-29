@@ -1,0 +1,29 @@
+
+- name: Send text for number
+  serveOnly: true
+  request:
+    method: POST
+    serveEndpoint: /api/send-text
+    body: { number: "+447700900123" }
+  response:
+    code: 200
+    headers:
+      content-type: application/json
+    serveBody:
+      {
+        messageId: "123456789",
+      }
+
+- name: Send text for unknown number
+  serveOnly: true
+  request:
+    method: POST
+    serveEndpoint: /api/send-text
+  response:
+    code: 401
+    headers:
+      content-type: application/json
+    serveBody:
+      {
+        error: "Invalid number"
+      }
