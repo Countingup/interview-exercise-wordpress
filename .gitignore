@@ -3,3 +3,5 @@ db_data/*
 !db_data/.gitkeep
 wordpress_data/*
 !wordpress_data/.gitkeep
+node_modules
+!custom_blocks/src/.gitkeep

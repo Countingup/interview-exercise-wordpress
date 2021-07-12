@@ -13,7 +13,7 @@ the exercise is designed for you to showcase your skills and to demonstrate how 
 We would ask that you have [docker compose](https://docs.docker.com/compose/install/) installed and that you choose an
 appropriate IDE to implement your solution.
 
-If you wish to use ESNext when writing your custom block, we would ask that you have `npm` installed.
+If you wish to use ESNext when writing your custom block, we would ask that you have `yarn` installed.
 
 ## Implementation
 The custom block can be either implemented using ES5 or ESNext depending on which syntax you are more comfortable with.
